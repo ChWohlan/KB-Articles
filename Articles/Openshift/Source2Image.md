@@ -337,3 +337,54 @@ This script runs the s2i build (make sure to have the s2i executable in your PAT
 * checking that the usage script is working as expected,
 * running the resulting image,
 * checking that the running application container responds properly.
+
+### Move the builder image
+
+#### Push the image to the Docker Hub
+
+Docker Hub repositories let you share images with co-workers, customers, or the Docker community at large. If you’re building your images internally, you can push them to a Docker Hub repository with `docker push <hub-user>/<repo-name>:<tag>`. See [Your Hub repositories](https://docs.docker.com/docker-hub/repos/).
+
+    # docker login --username=chwohlan
+    Password:
+    Email: chwohlan@gmail.com
+    WARNING: login credentials saved in /root/.docker/config.json
+    Login Succeeded
+
+See [Tag, push, and pull your image](https://docs.docker.com/engine/getstarted/step_six/)
+
+Interested in installing a [local Docker registry](https://docs.docker.com/registry/)?
+
+#### using Docker save
+
+To move a Docker image from one machine to another without using a repository you can save the image to a tar file via `docker save -o <save image to path> <image name>`.
+
+    $ sudo docker save -o lighttpd-centos7.tar lighttpd-centos7
+    $ sudo chmod 644 lighttpd-centos7.tar
+    $ ls -l
+    -rwxr--r--. 1 root     root     444057600 Sep 26 13:09 lighttpd-centos7.tar
+
+then copy the file via `scp <source> <user@host:target>`
+
+    $ sudo scp -r lighttpd-centos7.tar vagrant@10.2.2.2:~/
+    vagrant@10.2.2.2's password:
+    lighttpd-centos7.tar   
+    
+You can also ssh to the target and do it otherway round
+
+    $ ssh vagrant@10.2.2.2
+    vagrant@10.2.2.2's password:
+    Last login: Sat Aug 27 20:59:19 2016 from 10.2.2.10
+    [vagrant@localhost ~]$ sudo scp -r chwohlan@10.2.2.10:/home/chwohlan/s2i-tutorial/s2i-lighttpd/lighttpd-centos7.tar ~/
+    
+Or you can open Firefox and use FireFTP:
+
+![FireFTP.png](img/FireFTP.png)
+
+and finally load the file back again into docker via `docker load -i <path to image tar file>`.
+
+    $ sudo docker load -i lighttpd-centos7.tar
+
+    $ docker images
+    REPOSITORY                                            TAG                 IMAGE ID            CREATED                  SIZE
+    lighttpd-centos7                                      latest              8ea2f166f52b        Less than a second ago   429.1 MB
+    [...]

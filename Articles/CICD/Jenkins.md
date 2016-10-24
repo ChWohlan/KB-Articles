@@ -195,4 +195,4 @@ To run a cli command:
 * [Configure an external Jenkins with slaves on Openshift](https://blog.openshift.com/jenkins-slaves-in-openshift-using-an-external-jenkins-environment/)
 * [Deploy applications to OpenShift 3 using Jenkins](https://blog.openshift.com/deploy-applications-openshift-3-using-jenkins/)
 * [Creating a Jenkins Cluster in OpenShift](http://blog.andyserver.com/2016/01/jenkins-cluster-openshift/)
-* [Dynamic Jenkins Slave Provisioning on OpenShift(]http://blog.andyserver.com/2016/01/dynamic-jenkins-slave-provisioning-on-openshift/)
+* [Dynamic Jenkins Slave Provisioning on OpenShift](http://blog.andyserver.com/2016/01/dynamic-jenkins-slave-provisioning-on-openshift/)

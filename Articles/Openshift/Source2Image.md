@@ -23,7 +23,7 @@ Once you have RHEL 7.x installed in a VM on Oracle VirtualBox, you have to regis
 
     $ sudo subscription-manager --force register    
     Registering to: subscription.rhn.redhat.com:443/subscription
-    Username: tsi-appfabric-ccp
+    Username: tsi-appxxxxxxx
     Password: xxxxxx
     The system has been registered with ID: 23e9xxxx-xxxx-xxxx-xxxx-xxxxxxxx0fb8
 

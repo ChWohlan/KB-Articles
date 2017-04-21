@@ -216,6 +216,7 @@ Generate ssh RSA public and private keys
 Take a look
 
     ls -l .ssh/
+    cat ~/.ssh/known_hosts
 
 Use `e45-ssh-addkey.yml` playbook deploy local RSA public key for the Vagrant user to our remote client machines.
 
